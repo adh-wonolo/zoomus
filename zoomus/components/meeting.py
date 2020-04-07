@@ -72,3 +72,10 @@ class MeetingComponentV2(base.BaseComponent):
         return self.delete_request(
             "/meetings/{}".format(kwargs.get("id")), params=kwargs
         )
+
+    def participants(self, **kwargs):
+        util.require_keys(kwargs, "id")
+        util.require_keys(kwargs, "type")
+        return self.get_request(
+            "/metrics/meetings/{}/participants".format(kwargs.get("id")), params=kwargs
+        )
